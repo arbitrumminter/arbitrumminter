@@ -1,0 +1,409 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes slow-rotate {
+  from {
+    transform: rotate(0deg) scale(var(--t-scale, 1));
+  }
+  to {
+    transform: rotate(360deg) scale(var(--t-scale, 1));
+  }
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  color: white;
+  background: black;
+    scroll-behavior: smooth;
+  overscroll-behavior: auto;
+  height: 100%;
+
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: black;
+  overflow: hidden;
+}
+
+.background-element-blur {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url("/bg-animate/bg-blur.png");
+  background-size: cover;
+}
+.background-element-cube {
+  bottom: 0;
+  right: -20vw;
+  height: 1000px;
+  width: 1000px;
+
+  background-image: url("data:image/svg+xml,%3Csvg width='919' height='1034' viewBox='0 0 919 1034' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_f_3046_2)'%3E%3Cpath d='M8 300.958V733.042C8 760.54 22.6558 786.01 46.5561 799.759L420.843 1015.69C444.744 1029.44 474.055 1029.44 497.956 1015.69L872.243 799.759C896.143 786.01 910.799 760.54 910.799 733.042V300.958C910.799 273.46 896.143 247.99 872.243 234.241L497.956 18.3119C474.055 4.56272 444.744 4.56272 420.843 18.3119L46.5561 234.241C22.8813 247.99 8 273.46 8 300.958Z' fill='url(%23paint0_linear_3046_2)' fill-opacity='0.66'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_f_3046_2' x='0.4' y='0.4' width='917.999' height='1033.2' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='BackgroundImageFix' result='shape'/%3E%3CfeGaussianBlur stdDeviation='3.8' result='effect1_foregroundBlur_3046_2'/%3E%3C/filter%3E%3ClinearGradient id='paint0_linear_3046_2' x1='459.4' y1='8' x2='459.4' y2='1026' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23405D85'/%3E%3Cstop offset='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+
+  background-size: contain;
+
+  animation: levitationCube 5s ease-in-out infinite;
+}
+.background-element-blur,
+.background-element-cube {
+  position: fixed;
+  pointer-events: none;
+  background-repeat: no-repeat;
+}
+@keyframes levitationCube {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.1) translateY(-10px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+@media (max-width: 1200px) {
+ .background-element-cube {
+   bottom: -20vh;
+   right: -30vw;
+   height: 60vh;
+   width: 60vw;
+ }
+}
+@keyframes slow-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 956px) {
+  .background-element-cube {
+    bottom: -25vh;
+    right: -20vw;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalScaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-overlay {
+  animation: modalFadeIn 0.2s ease-out forwards;
+}
+
+.modal-content {
+  animation: modalScaleIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.coin-grid-item {
+  opacity: 0;
+  animation: fadeInScale 0.5s ease-out forwards;
+}
+
+.coin-grid-item:nth-child(1) { animation-delay: 0ms; }
+.coin-grid-item:nth-child(2) { animation-delay: 250ms; }
+.coin-grid-item:nth-child(3) { animation-delay: 500ms; }
+.coin-grid-item:nth-child(4) { animation-delay: 750ms; }
+.coin-grid-item:nth-child(5) { animation-delay: 1000ms; }
+.coin-grid-item:nth-child(6) { animation-delay: 1250ms; }
+.coin-grid-item:nth-child(7) { animation-delay: 1500ms; }
+.coin-grid-item:nth-child(8) { animation-delay: 1750ms; }
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(calc(-100% - 40px));
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToRight {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(calc(100% + 40px));
+    opacity: 0;
+  }
+}
+
+.coin-transition {
+  animation: slideInFromLeft 1s ease-out forwards;
+}
+
+.coin-exit {
+  animation: slideOutToRight 1s ease-in forwards;
+}
+
+.coin-container {
+  overflow: hidden;
+}
+
+.glass-card {
+  border: 1px solid #fff;
+}
+
+/* Remove default focus styles */
+
+
+html, body {
+  -webkit-overflow-scrolling: touch; /* Включает отскок */
+  overscroll-behavior: none; /* Отключаем стандартное поведение прокрутки */
+}
+
+input:focus,
+input:focus-visible,
+input:focus-within {
+  outline: none !important;
+}
+
+/* Only show focus styles when no owner or for the last input */
+input:not([readonly]):focus {
+  border-color: white !important;
+  box-shadow: 0 0 0 1px white !important;
+}
+
+/* Disable iOS default styles */
+input {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 9999px;
+}
+
+/* Remove number input spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Custom scrollbar for modal content */
+.modal-content ::-webkit-scrollbar {
+  width: 3px;
+}
+
+.modal-content ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 1.5px;
+}
+
+.modal-content ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+footer, header {
+  position: relative;
+}
+
+.pixel-text {
+  font-family: 'Pixelify Sans', system-ui;
+  font-size: 0.9em;
+  image-rendering: pixelated;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ripple-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Wallet Dropdown Animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wallet-dropdown {
+  animation: slideDown 0.2s ease-out forwards;
+}
+
+.tooltip {
+  position: absolute;
+  background: #C58D00;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 440px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: -45px;
+  left: 0;
+  opacity: 1;
+  visibility: visible;
+  z-index: 9999;
+  display: none;
+  color: black;
+}
+
+.warning-icon {
+  cursor: help;
+  position: relative;
+  display: inline-block;
+  margin-right: 4px;
+  z-index: 99;
+}
+
+.warning-icon:hover .tooltip {
+  display: flex;
+  visibility: visible;
+}
+
+@media (max-width: 700px) {
+  .tokenModalAdap{
+    padding: 10px 0 !important;
+  }
+
+  .modal-content {
+    max-width: 100% !important;
+  }
+
+  .modalTokenHeaderAdap{
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .pulse{
+    width: 80px;
+    height: 80px;
+  }
+  .background-element-pulse {
+    top: -15%;
+    right: -40%;
+    transform: scale(0.7);
+  }
+}
+
+.modal-body::-webkit-scrollbar {
+
+  display: none;
+}
+
+.modal-container {
+  overflow: hidden;
+  max-width: 630px;
+  width: 90%;
+  border-radius: 26px;
+}
+
+.modal-body {
+  width: 100%!important;
+}
+@media (max-width: 576px) {
+  .background-element-cube {
+    height: 50vh;
+    width: 60vw;
+  }
+}
+@media (max-width: 390px) {
+  .background-element-pulse {
+    top: -25%;
+    right: -100%;
+    transform: scale(.7);
+  }
+}
